@@ -125,71 +125,81 @@ const Header: React.FC = () => {
               )}
             </button>
 
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden text-gray-800 hover:text-primary-600 transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden text-gray-800 hover:text-primary-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-offset-2 rounded"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMenuOpen}
+          >
+            <span className="sr-only">{isMenuOpen ? 'Close menu' : 'Open menu'}</span>
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
           </div>
         </div>
       </div>
 
       {/* Mobile Navigation */}
-      <div
-        className={`md:hidden absolute top-full left-0 right-0 bg-white shadow-md transition-transform duration-300 transform ${
-          isMenuOpen ? 'translate-y-0' : '-translate-y-full'
-        }`}
-      >
-        <div className="container-custom mx-auto py-4 px-4 space-y-4">
-          <Link
-            to="/"
-            className="block py-2 font-medium hover:text-primary-600 transition-colors"
+          <div
+            className={`md:hidden absolute top-full left-0 right-0 bg-white shadow-md transition-transform duration-300 transform ${
+              isMenuOpen ? 'translate-y-0' : '-translate-y-full'
+            }`}
+            role="menu"
+            aria-label="Mobile navigation menu"
           >
-            Home
-          </Link>
-          <Link
-            to="/shop"
-            className="block py-2 font-medium hover:text-primary-600 transition-colors"
-          >
-            Shop
-          </Link>
-          <Link
-            to="/gift-ideas"
-            className="block py-2 font-medium hover:text-primary-600 transition-colors"
-          >
-            Gift Ideas
-          </Link>
-          <Link
-            to="/custom-gift"
-            className="block py-2 font-medium hover:text-primary-600 transition-colors"
-          >
-            Custom Gift
-          </Link>
-          <Link
-            to="/about"
-            className="block py-2 font-medium hover:text-primary-600 transition-colors"
-          >
-            About
-          </Link>
-          <Link
-            to="/contact"
-            className="block py-2 font-medium hover:text-primary-600 transition-colors"
-          >
-            Contact
-          </Link>
-          <div className="flex space-x-4 py-2">
-            <button className="text-gray-800 hover:text-primary-600 transition-colors">
-              <Search size={20} />
-            </button>
-            <button className="text-gray-800 hover:text-primary-600 transition-colors">
-              <User size={20} />
-            </button>
+            <div className="container-custom mx-auto py-4 px-4 space-y-4">
+              <Link
+                to="/"
+                className="block py-2 font-medium hover:text-primary-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-600 rounded"
+                role="menuitem"
+              >
+                Home
+              </Link>
+              <Link
+                to="/shop"
+                className="block py-2 font-medium hover:text-primary-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-600 rounded"
+                role="menuitem"
+              >
+                Shop
+              </Link>
+              <Link
+                to="/gift-ideas"
+                className="block py-2 font-medium hover:text-primary-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-600 rounded"
+                role="menuitem"
+              >
+                Gift Ideas
+              </Link>
+              <Link
+                to="/custom-gift"
+                className="block py-2 font-medium hover:text-primary-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-600 rounded"
+                role="menuitem"
+              >
+                Custom Gift
+              </Link>
+              <Link
+                to="/about"
+                className="block py-2 font-medium hover:text-primary-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-600 rounded"
+                role="menuitem"
+              >
+                About
+              </Link>
+              <Link
+                to="/contact"
+                className="block py-2 font-medium hover:text-primary-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-600 rounded"
+                role="menuitem"
+              >
+                Contact
+              </Link>
+              <div className="flex space-x-4 py-2">
+                <button className="text-gray-800 hover:text-primary-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-600 rounded">
+                  <Search size={20} />
+                </button>
+                <button className="text-gray-800 hover:text-primary-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-600 rounded">
+                  <User size={20} />
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
       {/* Cart Dropdown */}
       {isCartOpen && <CartDropdown onClose={() => setIsCartOpen(false)} />}
